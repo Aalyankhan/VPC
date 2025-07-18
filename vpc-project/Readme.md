@@ -1,7 +1,3 @@
-Here's your updated `README.md` including your markdown and completing it with the missing sections (prerequisites, usage, outputs, learnings, etc.) so it's fully ready for GitHub:
-
----
-
 ```markdown
 # 🌐 Terraform AWS VPC Project (Production-Ready)
 
