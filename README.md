@@ -141,7 +141,3 @@ MIT License © 2025 [Aalyan Khan](https://github.com/Aalyankhan)
 
 Contributions, issues, and feature requests are welcome! Feel free to fork and submit a PR.
 
-```
-
-Let me know if you want this customized further (like replacing your GitHub URL, name, or adding a Cloudcraft diagram).
-```
