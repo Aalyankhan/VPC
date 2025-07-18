@@ -80,3 +80,27 @@ resource "aws_route_table_association" "private_route_association" {
       subnet_id = aws_subnet.private[count.index].id
       route_table_id = aws_route_table.private[count.index].id
 }
+
+resource "aws_security_group" "bastion_sg" {
+      name        = "bastion-sg"
+      description = "Allow SSH"
+      vpc_id     = aws_vpc.main.id
+
+      ingress {
+            from_port   = 22
+            to_port     = 22
+            protocol    = "tcp"
+            cidr_blocks = ["0.0.0.0/0"]
+      }
+
+      egress {
+            from_port   = 0
+            to_port     = 0
+            protocol    = "-1"
+            cidr_blocks = ["0.0.0.0/0"]
+      }
+
+      tags = {
+            "Name" = "MyBastionSG"
+      }
+}
