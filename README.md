@@ -59,7 +59,7 @@ aws configure --profile terraform-prod
 ### 1. Clone this Repository
 
 ```bash
-git clone https://github.com/yourusername/vpc-project.git
+git clone https://github.com/Aalyankhan/vpc-project.git
 cd vpc-project
 ```
 
