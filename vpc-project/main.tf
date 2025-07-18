@@ -1,3 +1,4 @@
+# Create the VPC
 resource "aws_vpc" "main" {
   cidr_block = var.vpc_cidr
   enable_dns_hostnames = true
@@ -7,9 +8,11 @@ resource "aws_vpc" "main" {
   }
 }
 
+# Get the available AZs
 data "aws_availability_zone" "available" {
 }
 
+# Create the public subnets
 resource "aws_subnet" "public" {
       count = 2
       vpc_id = aws_vpc.main.id
@@ -21,6 +24,7 @@ resource "aws_subnet" "public" {
       }
 }
 
+# Create the private subnets
 resource "aws_subnet" "private" {
       count = 2
       vpc_id = aws_vpc.main.id
@@ -31,6 +35,7 @@ resource "aws_subnet" "private" {
       }
 }
 
+# Create the internet gateway
 resource "aws_internet_gateway" "igw" {
       vpc_id = aws_vpc.main.id
       tags = {
@@ -38,6 +43,7 @@ resource "aws_internet_gateway" "igw" {
       }
 }
 
+# Create the NAT Gateway
 resource "aws_eip" "nat" {
       count = 2
       tags = {
@@ -45,6 +51,7 @@ resource "aws_eip" "nat" {
       }
 }
 
+# Create the NAT Gateway
 resource "aws_nat_gateway" "nat" {
       count = 2
       allocation_id = aws_eip.nat[count.index].id
@@ -52,4 +59,24 @@ resource "aws_nat_gateway" "nat" {
       tags = {
         "Name" = "MyNATGateway-${count.index + 1}"
       }
+}
+
+resource "aws_route_table" "private" {
+      count = 2
+      vpc_id = aws_vpc.main.id
+
+      route {
+            cidr_block = "0.0.0.0/0"
+            nat_gateway_id = aws_nat_gateway.nat[count.index].id
+      }
+
+      tags = {
+            "Name" = "MyPrivateRouteTable-${count.index + 1}"
+      }
+}
+
+resource "aws_route_table_association" "private_route_association" {
+      count = 2
+      subnet_id = aws_subnet.private[count.index].id
+      route_table_id = aws_route_table.private[count.index].id
 }
