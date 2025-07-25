@@ -125,7 +125,7 @@ terraform destroy -auto-approve
 
 This diagram shows the high-level design of the VPC with public/private subnets, NAT Gateway, and Bastion Host:
 
-![AWS VPC Architecture](./aws-vpc-architecture.png)
+![AWS VPC Architecture](vpc-project/aws-vpc-architecture.png)
 
 ---
 
