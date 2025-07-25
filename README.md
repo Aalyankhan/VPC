@@ -1,4 +1,3 @@
-```markdown
 # 🌐 Terraform AWS VPC Project (Production-Ready)
 
 This project provisions a **highly available and secure VPC architecture** using Terraform. It includes **public and private subnets across 2 Availability Zones**, a **NAT Gateway**, a **bastion EC2 instance**, and all necessary route tables and gateways.
@@ -22,7 +21,6 @@ This project provisions a **highly available and secure VPC architecture** using
 ## 🧾 File Structure
 
 ```
-
 vpc-project/
 ├── main.tf             # Main resources: VPC, subnets, EC2, NAT, IGW
 ├── variables.tf        # Input variable definitions
@@ -30,8 +28,7 @@ vpc-project/
 ├── outputs.tf          # Output values to expose after apply
 ├── provider.tf         # AWS provider configuration
 └── README.md           # Project documentation
-
-````
+```
 
 ---
 
@@ -50,7 +47,7 @@ Make sure your AWS credentials are set using a named profile:
 
 ```bash
 aws configure --profile terraform-prod
-````
+```
 
 ---
 
@@ -93,10 +90,10 @@ terraform apply -auto-approve
 
 After applying, Terraform will output:
 
-* ✅ VPC ID
-* ✅ Public Subnet IDs
-* ✅ Private Subnet IDs
-* ✅ EC2 Bastion Host Public IP
+- ✅ VPC ID
+- ✅ Public Subnet IDs
+- ✅ Private Subnet IDs
+- ✅ EC2 Bastion Host Public IP
 
 You can connect to the bastion host via SSH for admin tasks on private instances (future enhancement).
 
@@ -106,11 +103,11 @@ You can connect to the bastion host via SSH for admin tasks on private instances
 
 This project demonstrates:
 
-* ✅ Subnet design across multiple Availability Zones
-* ✅ Public/private segregation using NAT and IGW
-* ✅ EC2 provisioning and SSH access via security groups
-* ✅ Clean code separation using `variables.tf` and `outputs.tf`
-* ✅ Terraform best practices for production infrastructure
+- ✅ Subnet design across multiple Availability Zones
+- ✅ Public/private segregation using NAT and IGW
+- ✅ EC2 provisioning and SSH access via security groups
+- ✅ Clean code separation using `variables.tf` and `outputs.tf`
+- ✅ Terraform best practices for production infrastructure
 
 ---
 
@@ -128,9 +125,10 @@ terraform destroy -auto-approve
 
 This diagram shows the high-level design of the VPC with public/private subnets, NAT Gateway, and Bastion Host:
 
-![AWS VPC Architecture](./vpc-project/aws-vpc-architecture.png)
+![AWS VPC Architecture](./aws-vpc-architecture.png)
 
 ---
+
 ## 🪪 License
 
 MIT License © 2025 [Aalyan Khan](https://github.com/Aalyankhan)
@@ -140,4 +138,3 @@ MIT License © 2025 [Aalyan Khan](https://github.com/Aalyankhan)
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome! Feel free to fork and submit a PR.
-
